@@ -24,10 +24,13 @@ again.addEventListener(`click`, function () {
 
 check.addEventListener(`click`, function () {
     const guessNumber = Number(guess.value);
-    // No input
-    if (!guessNumber) {
+    // Invalid number
+    if (guessNumber < 1) {
+        message.textContent = `Choose number between 1 and 20`;
+        guess.value = ``;
+        // No input
+    } else if (!guessNumber) {
         message.textContent = `No number! 🚫`;
-        // Player wins
     } else if (guessNumber === secretNumber) {
         message.textContent = `🥳 Correct Number!`;
         number.textContent = secretNumber;
