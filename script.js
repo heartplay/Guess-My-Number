@@ -36,26 +36,15 @@ check.addEventListener(`click`, function () {
         number.textContent = secretNumber;
         document.querySelector(`body`).style.backgroundColor = `#60b347`;
         number.style.width = `30rem`;
-        if (!highScore) {
+        if (currentScore > highScore) {
             highScore = currentScore;
-        } else if (currentScore > highScore) {
-            highScore = currentScore;
+            record.textContent = highScore;
         }
-        record.textContent = highScore;
-        // Guess is higher
-    } else if (guessNumber > secretNumber) {
+        // Guess is wrong
+    } else if (guessNumber !== secretNumber) {
         if (currentScore > 1) {
-            message.textContent = `📈 Too high!`;
-            currentScore--;
-            score.textContent = currentScore;
-        } else {
-            message.textContent = `💥 You lost the game!`;
-            score.textContent = 0;
-        }
-        // Guess is lower
-    } else if (guessNumber < secretNumber) {
-        if (currentScore > 1) {
-            message.textContent = `📈 Too low!`;
+            message.textContent =
+                guessNumber > secretNumber ? `📈 Too high!` : `📈 Too low!`;
             currentScore--;
             score.textContent = currentScore;
         } else {
