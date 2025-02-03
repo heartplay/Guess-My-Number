@@ -28,16 +28,7 @@ check.addEventListener(`click`, function () {
         displayMessage(`No number! 🚫`);
         // Guess is right
     } else if (guessNumber === secretNumber) {
-        displayMessage(`🥳 Correct Number!`);
-        number.textContent = secretNumber;
-        body.style.backgroundColor = `#60b347`;
-        number.style.width = `30rem`;
-
-        if (currentScore > highScore) {
-            highScore = currentScore;
-            record.textContent = highScore;
-        }
-        if (tryCount == 0) alert(`Wow! First Try!`);
+        win(secretNumber);
         // Guess is wrong
     } else if (guessNumber !== secretNumber) {
         if (currentScore > 1) {
@@ -53,6 +44,18 @@ check.addEventListener(`click`, function () {
         }
     }
 });
+
+const win = function (secretNumber) {
+    displayMessage(`🥳 Correct Number!`);
+    number.textContent = secretNumber;
+    body.style.backgroundColor = `#60b347`;
+    number.style.width = `30rem`;
+    if (currentScore > highScore) {
+        highScore = currentScore;
+        record.textContent = highScore;
+    }
+    if (tryCount == 0) alert(`Wow! First Try!`);
+};
 
 const clear = function () {
     tryCount = 0;
