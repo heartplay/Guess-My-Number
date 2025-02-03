@@ -21,7 +21,7 @@ check.addEventListener(`click`, function () {
     const guessNumber = Number(guess.value);
     // Invalid number
     if (guessNumber < 1 || guessNumber > 20) {
-        displayMessage(`Choose number between 1 and 20`);
+        displayMessage(`Choose number between 1 and 20 🤦`);
         guess.value = ``;
         // No input
     } else if (!guessNumber) {
