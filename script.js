@@ -13,6 +13,8 @@ let currentScore = 20;
 let highScore = 0;
 let tryCount = 0;
 
+const invalidChars = [`-`, `+`, `e`, `.`, `,`];
+
 again.addEventListener(`click`, function () {
     clear();
 });
@@ -20,7 +22,10 @@ again.addEventListener(`click`, function () {
 check.addEventListener(`click`, function () {
     const guessNumber = Number(guess.value);
     // Invalid number
-    if (guessNumber < 1 || guessNumber > 20) {
+    if (!isCorrectString(guess.value)) {
+        displayMessage(`Invalid number 😒`);
+        guess.value = ``;
+    } else if (guessNumber < 1 || guessNumber > 20) {
         displayMessage(`Choose number between 1 and 20 🤦`);
         guess.value = ``;
         // No input
@@ -71,4 +76,11 @@ const clear = function () {
 
 const displayMessage = function (string) {
     message.textContent = string;
+};
+
+const isCorrectString = function (string) {
+    for (let i = 0; i < invalidChars.length; i++) {
+        if (string.indexOf(invalidChars[i]) !== -1) return false;
+    }
+    return true;
 };
