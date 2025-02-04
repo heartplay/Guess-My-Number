@@ -2,10 +2,10 @@
 const number = document.querySelector(`.number`);
 const check = document.querySelector(`.check`);
 const guess = document.querySelector(`.guess`);
-const message = document.querySelector('.message');
-const score = document.querySelector('.score');
-const again = document.querySelector('.again');
-const record = document.querySelector('.highscore');
+const message = document.querySelector(`.message`);
+const score = document.querySelector(`.score`);
+const again = document.querySelector(`.again`);
+const record = document.querySelector(`.highscore`);
 const body = document.querySelector(`body`);
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
